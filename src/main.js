@@ -4,6 +4,7 @@ import router from './router';
 import firebase from 'firebase/app';
 import 'tailwindcss/tailwind.css';
 
+
 var firebaseConfig = {
     apiKey: 'AIzaSyD18RyCRqsdEzKg-h5wsla0kguOM7SHR2c',
     authDomain: 'assignment-47c5e.firebaseapp.com',
