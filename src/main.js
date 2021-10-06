@@ -2,6 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import firebase from 'firebase/app';
+import 'tailwindcss/tailwind.css';
 
 var firebaseConfig = {
     apiKey: 'AIzaSyD18RyCRqsdEzKg-h5wsla0kguOM7SHR2c',
