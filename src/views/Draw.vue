@@ -10,6 +10,7 @@
       <div v-for="bets in bet" :key="bets"> 
             <button class="bg-pink-800 hover:bg-blue-dark w-15 my-1 py-2 px-2 text-sm md:text-3xl text-white font-bold md:h-20 md:w-20 rounded">{{bets}}</button>
     </div>
+    
      </div>
     </div>
     
@@ -17,8 +18,11 @@
       <h2 class="text-2xl font-semibold leading-normal mt-4 mb-2 text-pink-800"> Draw </h2>
       
       <div class="flex justify-center flex-row m-10 gap-4  md:grid-rows">
-      <div v-for="bets in ndraw" :key="bets"> 
-            <button class="bg-pink-800 hover:bg-blue-dark w-15 my-1 py-2 px-2 text-sm md:text-3xl text-white font-bold md:h-20 md:w-20 rounded">{{bets}}</button>
+        <ul class=" flex justify-center">
+        
+        </ul>
+      <div v-for="bets in 5" :key="bets"> 
+            <button id="bets" class="bg-pink-800 hover:bg-blue-dark w-15 my-1 py-2 px-2 text-sm md:text-3xl text-white font-bold md:h-20 md:w-20 rounded">{{bets.value}}</button>
      </div>
      </div>
       
@@ -32,11 +36,14 @@ import { mapGetters } from 'vuex';
 
 export default {
         name: 'Draw',
-        data: function() {
+        data: function() 
+        {
           return {
           name: "",
           ndraw:[],
           numbers:[],
+          start: false,
+          finished: false,
          };
         },
         computed:
@@ -51,66 +58,53 @@ export default {
          
          mounted: function() 
          {
-          this.doDraw()
+          if (this.bet.length != 0) 
+            {
+            this.start = true;
+            setTimeout(() => {
+             const run = (ms) => new Promise((num) => setTimeout(num, ms)); this.doDraw(run);}, 3000);
+           }
          },
-        
-        methods: {
-          
-         show: function()
+       methods: {
+         async doDraw(t) 
          {
-           console.log(this.doDraw.this.ndraw);
-         },
-        
-        Draw: function()
-            {  
-             var n;
-             n = Math.floor(Math.random()*30)+1;
-             var counter = 0;
-             while(counter!=5)
-             {
-               if(!this.ndraw.includes(n))
-               {
-               this.ndraw.push(n);
-               n = Math.floor(Math.random()*30)+1;
-               counter+=1
-               }
-
-             }
-            return this.ndraw
-             
-             },
-         
-         checkBet: function()
-        {
-          for(let i = 0; i < this.numbers.length; i++) {
-          
-             for(let j = 0; j < this.ndraw.length; j++) {
+            for (var i = 0; i < 5; i++) 
+            {
+             await t(4000);
+             var num = this.draw();
+             this.ndraw.push(num);
+             alert(num)
               
-                 if(this.numbers[i] === this.ndraw[j]) {
-                      console.log("sss")
-                      alert(this.numbers[i])
-                }
-          }
-          }
+            }
+             await t(3000);
+             this.start = false;
+             this.finished = true;
         },
-        doDraw: function()
+    
+    
+        draw() 
         {
-           setTimeout(function(){this.Draw()}.bind(this), 3000);
-         
+          var num;
+          do 
+          {
+            num = Math.floor(Math.random() * 30) + 1;
+          }
+          while (this.ndraw.includes(num));
+          console.log(num)
+          return num;
         },
 
-        
-    
+       validate(number) 
+       {
+        if (this.getSpecificNumber(number).length >= 1) 
+        {
+          this.winningNumbers.push(number);
+          return true;
         }
-    
-            
-            
+        return false;
+       },
+      }
         
-        
-        
-        
-
-          
 }
 </script>
 
