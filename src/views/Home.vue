@@ -27,9 +27,6 @@
   </div>
   </div>
 </div>
-    
-  
->>>>>>> af5f55a30e469e6f7ea641b85d4c38600f1f87c7
 </template>
 
 
