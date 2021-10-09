@@ -1,36 +1,12 @@
 <template>
-  <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-    <div class="container">
-      <router-link to="/" class="navbar-brand">Home</router-link>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label
-      >
-
-        <router-link to="/" class="navbar-brand">Draw</router-link>
-
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto"></ul>
-        <ul class="navbar-nav ml-auto">
-          <template v-if="user.loggedIn">
-            <div class="nav-item">{{user.data.displayName}}</div>
-            <li class="nav-item">
-              <a class="nav-link" @click.prevent="signOut">Sign out</a>
-            </li>
-          </template>
-          <template v-else>
-
-          </template>
+  <nav  class="bg-black shadow">
+    <div class="container flex items-center justify-center px-6 py-8 mx-auto text-gray-100 capitalize">
+        <ul class="navbar-nav">
+            <router-link  class="border-b-2 border-transparent hover:text-pink-800 hover:border-pink-800 mx-1.5 sm:mx-6" to="Home" > Home </router-link>
+            <router-link class="border-b-2 border-transparent hover:text-pink-800 hover:border-pink-800 mx-1.5 sm:mx-6" to="Draw"> Draw </router-link>
+            <router-link to="/" class="border-b-2 border-transparent hover:text-pink-800 hover:border-pink-800 mx-1.5 sm:mx-6" @click.prevent="signOut"> <font-awesome-icon :icon="['fas', 'user-alt']" class="mx-2 fa-lg icon alt"/> Logout</router-link>
         </ul>
-      </div>
-    </div>
+        </div>
   </nav>
 </template>
 
@@ -50,10 +26,11 @@ export default {
         .signOut()
         .then(() => {
           this.$router.replace({
-            name: "home"
+            name: "Login"
           });
         });
     }
   }
 };
 </script>
+
