@@ -9,7 +9,7 @@
     <div class="container mx-auto">
      <div class="grid grid-cols-5 gap-3 my-4"> 
         <div v-for="index in 30" :key="index">
-            <button  v-on:click="takeValue(index)" type="submit"  class="bg-pink-800 hover:bg-blue-dark text-white md:text-2xl m-4 font-bold md:w-24 w-14 px-2 py-2 rounded">{{index}}</button>
+            <button  v-on:click="takeValue(index)" type="submit"  class="bg-pink-800 hover:bg-blue-dark text-white md:text-2xl m- font-bold md:w-24 w-14 px-2 py-2 rounded">{{index}}</button>
         </div>
     </div>
     </div>
@@ -17,12 +17,12 @@
   <div id="show" class="bg-gray-400">  <h2 class="text-2xl font-semibold leading-normal mt-4 mb-2 text-pink-800">
         Your bet </h2>
     <div v-for="number in this.numbers" :key="number"> 
-            <button  v-on:click="takeValue(number)" type="submit"  class="bg-pink-800 hover:bg-blue-dark text-white md:text-2xl m-5 font-bold md:w-24 w-14 px-2 py-2 rounded-full">{{number}}</button>
+            <button  class="bg-pink-800 hover:bg-blue-dark text-white md:text-2xl m-3 font-bold md:w-24 w-14 px-2 py-2 rounded-full">{{number}}</button>
             <button  v-on:click="deleteValue(number)" type="submit">  <font-awesome-icon :icon="['fas', 'minus-circle']" class="mx-2 text-yellow-700 fa-lg icon alt"/> </button>
 
     </div>
     <div v-if="this.numbers.length > 4">
-    <button  v-on:click="bet(array)" type="submit"  class=" bg-blue-800 hover:bg-blue-dark text-white text-2xl font-bold my-10  py-5 px-12 rounded">Submit</button>
+    <button  v-on:click="bet(array)" type="submit"  class=" bg-blue-800 hover:bg-blue-dark text-white text-md px-3 md:text-2xl font-bold my-5 py-4 md:px-12 rounded-full">Submit</button>
    </div>
 
    

@@ -5,31 +5,38 @@
   <div class="grid grid-cols-2 gap-3 bg-gray-800">
     
     <div class="col-span-1"> 
-     <h2 class="text-2xl font-semibold leading-normal mt-4 mb-2 text-pink-800"> Your Bet</h2> 
-     <div class="flex justify-center flex-row m-10 gap-4  md:grid-rows">
-      <div v-for="bets in bet" :key="bets"> 
-            <button class="bg-pink-800 hover:bg-blue-dark w-15 my-1 py-2 px-2 text-sm md:text-3xl text-white font-bold md:h-20 md:w-20 rounded">{{bets}}</button>
-    </div>
-    
-     </div>
-    </div>
-    
-    <div id="show" class="bg-gray-400"> 
+      
       <h2 class="text-2xl font-semibold leading-normal mt-4 mb-2 text-pink-800"> Draw </h2>
       
       <div class="flex justify-center flex-row m-10 gap-4  md:grid-rows">
-        <ul class=" flex justify-center">
-        
-        </ul>
-      <div v-for="bets in 5" :key="bets"> 
-            <button id="bets" class="bg-pink-800 hover:bg-blue-dark w-15 my-1 py-2 px-2 text-sm md:text-3xl text-white font-bold md:h-20 md:w-20 rounded">{{bets.value}}</button>
-     </div>
-     </div>
+        <ul id="dnum" class=" flex justify-center">
+          <li
+            v-for="dnum in 5"
+            :key="dnum"
+            :class="['bg-pink-800','hover:bg-blue-dark','w-15', 'm-1','px-2', 'py-2', 'text-sm', 'md:text-3xl', 'text-white', 'font-bold', 'md:py-5', 'md:h-20', 'md:w-20', 'rounded']"
+          ></li>
+          </ul>
+      
       
      </div>
+    </div>
+    <div class="bg-gray-400"> 
+     <h2 class="text-2xl font-semibold leading-normal mt-4 mb-2 text-pink-800"> Your Bet</h2> 
+     <div class="flex justify-center flex-row m-10 gap-4  md:grid-rows">
+       <ul id="Wnum" class=" flex justify-center">
+          <li
+            v-for="num in bet"
+            :key="num"
+            :class="['bg-pink-800','hover:bg-blue-dark','w-15', 'm-1','px-3', 'py-2', 'text-sm', 'md:text-3xl', 'text-white', 'font-bold', 'md:py-5', 'md:h-20', 'md:w-20', 'rounded-full']"
+            
+          >{{ num}}</li>
+        </ul> 
+     </div>
+    </div>
   </div>
 </div>
 </template>
+
 
 <script>
 import { mapGetters } from 'vuex';
@@ -39,7 +46,7 @@ export default {
         data: function() 
         {
           return {
-          name: "",
+          win:[],
           ndraw:[],
           numbers:[],
           start: false,
@@ -65,22 +72,48 @@ export default {
              const run = (ms) => new Promise((num) => setTimeout(num, ms)); this.doDraw(run);}, 3000);
            }
          },
+
        methods: {
          async doDraw(t) 
          {
-            for (var i = 0; i < 5; i++) 
-            {
-             await t(4000);
              var num = this.draw();
              this.ndraw.push(num);
-             alert(num)
-              
+             var li = document.getElementById("dnum").querySelectorAll("li")[0];
+             li.innerText = num;
+             li.value = num;
+             if (this.validate(num)) 
+             {
+              li = document.getElementById("Wnum").querySelectorAll("li")[0];
+              li.classList.remove("bg-pink-800");
+             li.classList.add("bg-green-600");
+
+             } 
+         
+
+            for (var i = 1; i < 5; i++) 
+            {
+             await t(4000);
+             num = this.draw();
+
+             this.ndraw.push(num);
+             li = document.getElementById("dnum").querySelectorAll("li")[i];
+             li.innerText = num;
+             li.value = num; 
+             
+
+             if (this.validate(num)) 
+             {
+              var k = this.bet.indexOf(num);
+              li = document.getElementById("Wnum").querySelectorAll("li")[k];
+              li.classList.remove("bg-pink-800");
+              li.classList.add("bg-green-600");
+             } 
+            
             }
-             await t(3000);
+           
              this.start = false;
              this.finished = true;
         },
-    
     
         draw() 
         {
@@ -96,11 +129,14 @@ export default {
 
        validate(number) 
        {
-        if (this.getSpecificNumber(number).length >= 1) 
-        {
-          this.winningNumbers.push(number);
-          return true;
-        }
+        
+          for(var j=0; j<5; j++)
+         {
+           if(this.bet[j]===number)
+           {
+             return true;
+           }
+         }
         return false;
        },
       }
