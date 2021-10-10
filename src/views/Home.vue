@@ -22,7 +22,7 @@
 
     </div>
     <div v-if="this.numbers.length > 4">
-    <button  v-on:click="bet(array)" type="submit"  class=" bg-blue-800 hover:bg-blue-dark text-white text-md px-3 md:text-2xl font-bold my-5 py-4 md:px-12 rounded-full">Submit</button>
+    <button  v-on:click="bet(array)" type="submit"  class=" bg-yellow-600 hover:bg-blue-dark text-white text-md px-3 md:text-2xl font-bold my-5 py-4 md:px-12 rounded-full">Submit</button>
    </div>
 
    

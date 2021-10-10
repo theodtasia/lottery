@@ -2,18 +2,16 @@
 <div>
   <navbar></navbar>
   <h1 class="text-6xl font-normal leading-normal mt-4 mb-2 text-pink-800">Draw Page</h1>
-  <div class="grid grid-cols-2 gap-3 bg-gray-800">
-    
+  <div class="grid grid-cols-2 gap-3 bg-gray-800">    
     <div class="col-span-1"> 
       
       <h2 class="text-2xl font-semibold leading-normal mt-4 mb-2 text-pink-800"> Draw </h2>
-      
       <div class="flex justify-center flex-row m-10 gap-4  md:grid-rows">
         <ul id="dnum" class=" flex justify-center">
           <li
             v-for="dnum in 5"
             :key="dnum"
-            :class="['bg-pink-800','hover:bg-blue-dark','w-15', 'm-1','px-2', 'py-2', 'text-sm', 'md:text-3xl', 'text-white', 'font-bold', 'md:py-5', 'md:h-20', 'md:w-20', 'rounded']"
+            :class="['bg-pink-800','hover:bg-blue-dark','w-9', 'm-1','p-2', 'text-sm', 'md:text-3xl', 'text-white', 'font-bold', 'md:py-5', 'md:h-20', 'md:w-20', 'rounded-full']"
           ></li>
           </ul>
       
@@ -27,14 +25,15 @@
           <li
             v-for="num in bet"
             :key="num"
-            :class="['bg-pink-800','hover:bg-blue-dark','w-15', 'm-1','px-3', 'py-2', 'text-sm', 'md:text-3xl', 'text-white', 'font-bold', 'md:py-5', 'md:h-20', 'md:w-20', 'rounded-full']"
+            :class="['bg-pink-800','hover:bg-blue-dark','w-9', 'm-1','p-2', 'text-sm', 'md:text-3xl', 'text-white', 'font-bold', 'md:py-5', 'md:h-20', 'md:w-20', 'rounded-full']"
             
           >{{ num}}</li>
         </ul> 
      </div>
     </div>
+  
   </div>
-</div>
+ </div>
 </template>
 
 
@@ -49,8 +48,7 @@ export default {
           win:[],
           ndraw:[],
           numbers:[],
-          start: false,
-          finished: false,
+          finish: false,
          };
         },
         computed:
@@ -83,9 +81,11 @@ export default {
              li.value = num;
              if (this.validate(num)) 
              {
-              li = document.getElementById("Wnum").querySelectorAll("li")[0];
+               var k = this.bet.indexOf(num);
+
+              li = document.getElementById("Wnum").querySelectorAll("li")[k];
               li.classList.remove("bg-pink-800");
-             li.classList.add("bg-green-600");
+              li.classList.add("bg-green-600");
 
              } 
          
@@ -103,7 +103,7 @@ export default {
 
              if (this.validate(num)) 
              {
-              var k = this.bet.indexOf(num);
+              k = this.bet.indexOf(num);
               li = document.getElementById("Wnum").querySelectorAll("li")[k];
               li.classList.remove("bg-pink-800");
               li.classList.add("bg-green-600");
@@ -111,8 +111,7 @@ export default {
             
             }
            
-             this.start = false;
-             this.finished = true;
+             this.finish = true;
         },
     
         draw() 

@@ -15,16 +15,25 @@ const routes = [
         path: '/',
         name: 'Login',
         component: Login,
+        meta: {
+            title: 'Login' 
+          }
     },
     {
         path: '/register',
         name: 'Register',
-        component: Register
+        component: Register,
+        meta: {
+            title: 'Register' 
+          }
     },
     {
         path: '/draw',
         name: 'Draw',
-        component: Draw
+        component: Draw,
+        meta: {
+            title: 'Draw' 
+          }
        
     },
     {
@@ -32,6 +41,7 @@ const routes = [
         name: 'Home',
         component: Home,
         meta: {
+            title:'Home',
             authRequired: true,
         },
     },

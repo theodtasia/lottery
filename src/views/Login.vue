@@ -1,13 +1,14 @@
 <template>
 <div class= " flex justify-center my-20">
- <div
-       class="max-w-xs bg-green-100 flex justify-center py-10 px-20 rounded-lg shadow-lg" 
-    >
+  
+ <div  class="max-w-xs bg-gray-400 flex justify-center py-10 px-20 rounded-lg shadow-lg"   >
+   
             <div v-if="error" class="alert alert-danger">{{error}}</div>
+
             <form action="#" @submit.prevent="submit">
               <div class="form-group">
-                <label for="email" class="text-gray-700 font-bold py-2">Email</label>
-                  <input class="form control text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3"
+                <label for="email" class="text-gray-700 font-bold py-2 rounded-full">Email</label>
+                  <input class="form control text-gray-700 shadow border m-2 rounded-full border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3"
                     id="email"
                     type="email"
                     name="email"
@@ -19,7 +20,7 @@
                 
         
                 <label for="password" class="text-gray-700 font-bold py-2">Password</label>
-                  <input class="form control text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3"
+                  <input class="form control text-gray-700 shadow border m-2 rounded-full border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3"
                     id="password"
                     type="password"
                     name="password"
@@ -30,8 +31,8 @@
               </div>
 
               <div class="form-group row mb-0">
-                  <button type="submit" class="bg-blue-500 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded">Login</button>
-                  <button @click="SignUp()" class="bg-blue-500 hover:bg-blue-dark mx-5 text-white font-bold py-2 px-4 rounded">Sign Up</button>
+                  <button type="submit" class="bg-yellow-600 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded">Login</button>
+                  <button @click="SignUp()" class="bg-yellow-600 hover:bg-blue-dark mx-5 text-white font-bold py-2 px-4 rounded">Sign Up</button>
                 
               </div>
             </form>
