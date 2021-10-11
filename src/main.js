@@ -2,6 +2,8 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import navbar from './components/navbar.vue';
+import save from './components/save.vue';
+
 import store from './store';
 import firebase from 'firebase/app';
 import 'tailwindcss/tailwind.css';
@@ -31,6 +33,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.component('navbar',navbar)
+Vue.component('save',save)
 Vue.config.productionTip = false;
 
 new Vue({

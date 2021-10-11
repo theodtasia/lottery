@@ -11,7 +11,7 @@
           <li
             v-for="dnum in 5"
             :key="dnum"
-            :class="['bg-pink-800','hover:bg-blue-dark','w-9', 'm-1','p-2', 'text-sm', 'md:text-3xl', 'text-white', 'font-bold', 'md:py-5', 'md:h-20', 'md:w-20', 'rounded-full']"
+            :class="['bg-pink-800','hover:bg-blue-dark','w-9', 'm-1','p-2', 'text-sm', 'md:text-3xl', 'text-white', 'font-bold', 'md:py-6', 'md:h-20', 'md:w-20', 'rounded-full']"
           ></li>
           </ul>
       
@@ -25,14 +25,19 @@
           <li
             v-for="num in bet"
             :key="num"
-            :class="['bg-pink-800','hover:bg-blue-dark','w-9', 'm-1','p-2', 'text-sm', 'md:text-3xl', 'text-white', 'font-bold', 'md:py-5', 'md:h-20', 'md:w-20', 'rounded-full']"
+            :class="['bg-pink-800','hover:bg-blue-dark','w-9', 'm-1','p-2', 'text-sm', 'md:text-3xl', 'text-white', 'font-bold', 'md:py-6', 'md:h-20', 'md:w-20', 'rounded-full']"
             
           >{{ num}}</li>
         </ul> 
      </div>
+      <h2 class="flex justify-end text-2xl font-semibold leading-normal m-4 p-4 text-pink-800"> Total amount: {{totalAmount()}}</h2> 
+
+     <modal v-if="finish">
+      <save :amount="this.amount" :win="this.win"></save>
+     </modal>
     </div>
-  
-  </div>
+    </div>
+     
  </div>
 </template>
 
@@ -86,7 +91,7 @@ export default {
               li = document.getElementById("Wnum").querySelectorAll("li")[k];
               li.classList.remove("bg-pink-800");
               li.classList.add("bg-green-600");
-
+              this.win.push(num);
              } 
          
 
@@ -103,6 +108,7 @@ export default {
 
              if (this.validate(num)) 
              {
+              this.win.push(num);
               k = this.bet.indexOf(num);
               li = document.getElementById("Wnum").querySelectorAll("li")[k];
               li.classList.remove("bg-pink-800");
@@ -110,7 +116,7 @@ export default {
              } 
             
             }
-           
+             await t(2000);
              this.finish = true;
         },
     
@@ -138,6 +144,24 @@ export default {
          }
         return false;
        },
+
+       totalAmount()
+       {
+         var amount=0;
+         if(this.win.length===3)
+         {
+           this.amount=5;
+         }
+         else if(this.win.length===4)
+         {
+           this.amount=10;
+         }
+         else if(this.win.length===5)
+         {
+           this.amount=20;
+         }
+         return amount;
+       }
       }
         
 }
