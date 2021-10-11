@@ -5,6 +5,24 @@
 </div>
 </template>
 
-<script>
 
+<script>
+import { mapGetters } from "vuex";
+
+export default {
+  async created() {
+
+   
+  },
+  data() {
+    return {
+      history: [],
+    };
+  },
+  computed: {
+    ...mapGetters(["getUser", "isUserAuth"]),
+  },
+};
 </script>
+
+<style></style>

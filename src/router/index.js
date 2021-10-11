@@ -4,6 +4,7 @@ import Login from '../views/Login.vue';
 import Draw from '../views/Draw.vue';
 import Home from '../views/Home.vue';
 import Register from '../views/Register.vue';
+import History from '../views/History.vue';
 
 
 import firebase from 'firebase';
@@ -44,6 +45,14 @@ const routes = [
             title:'Home',
             authRequired: true,
         },
+    },
+    {
+        path: '/history',
+        name: 'History',
+        component: History,
+        meta: {
+            title: 'History' 
+          }
     },
 ];
 

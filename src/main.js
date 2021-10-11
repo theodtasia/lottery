@@ -6,18 +6,14 @@ import save from './components/save.vue';
 
 import store from './store';
 import firebase from 'firebase/app';
+import 'firebase/firestore';
 import 'tailwindcss/tailwind.css';
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUserAlt,faBars, faMinusCircle} from "@fortawesome/free-solid-svg-icons";
-import {
-  
-  faFacebook,
-  faStackOverflow,
-  faGithub
-} from "@fortawesome/free-brands-svg-icons";
+
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faUserAlt, faBars, faMinusCircle, faFacebook, faStackOverflow, faGithub);
+library.add(faUserAlt, faBars, faMinusCircle);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 var firebaseConfig = {

@@ -1,4 +1,5 @@
 <template>
+<div>
 <transition name="modal">
       <div class="modal-mask">
         <div class="modal-wrapper">
@@ -28,10 +29,16 @@
         </div>
       </div>
     </transition>
-    
+    </div>
 </template>
 
 <script>
+
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+import '@firebase/firestore'
+
 export default {
   name: "save",
   props: 
@@ -53,11 +60,28 @@ export default {
 
   methods: {
  
-    save() {
-         this.$emit("save", this.amount);
+    async save() 
+    {
+       const firestore = firebase.firestore();
+       var user = firebase.auth().currentUser.uid;
+       const db = firebase.getFirestore();
+       try {
+        const docRef = await firestore.addDoc(firestore.collection(db, "history"), {
+          amount: this.amount,
+          numbers: this.win,
+          status: "win",
+          user: user,
+          date: firestore.Timestamp.fromDate(new Date()),
+          
+        });
+        alert(`Game ${docRef.id} was saved to history.`),
+          this.$router.push("/");
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+       },
      
     },
-  }
 }
 
 </script>

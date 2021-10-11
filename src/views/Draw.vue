@@ -19,7 +19,7 @@
      </div>
     </div>
     <div class="bg-gray-400"> 
-     <h2 class="text-2xl font-semibold leading-normal mt-4 mb-2 text-pink-800"> Your Bet</h2> 
+     <h2 id ="title" class="text-2xl font-semibold leading-normal mt-4 mb-2 text-pink-800"> Your Bet</h2> 
      <div class="flex justify-center flex-row m-10 gap-4  md:grid-rows">
        <ul id="Wnum" class=" flex justify-center">
           <li
@@ -32,9 +32,9 @@
      </div>
       <h2 class="flex justify-end text-2xl font-semibold leading-normal m-4 p-4 text-pink-800"> Total amount: {{totalAmount()}}</h2> 
 
-     <modal v-if="finish">
+     <div v-if="finish">
       <save :amount="this.amount" :win="this.win"></save>
-     </modal>
+     </div>
     </div>
     </div>
      
@@ -54,6 +54,7 @@ export default {
           ndraw:[],
           numbers:[],
           finish: false,
+          amount: 0
          };
         },
         computed:
@@ -105,6 +106,12 @@ export default {
              li.innerText = num;
              li.value = num; 
              
+             if(this.win.length===5)
+              {
+              var title = document.getElementById("title");
+              title.classList.remove("text-pink-800");
+              title.classList.add("text-green-600");
+             }
 
              if (this.validate(num)) 
              {
