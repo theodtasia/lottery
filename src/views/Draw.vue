@@ -1,6 +1,14 @@
 <template>
 <div>
-  <navbar></navbar>
+  <nav  class="bg-black shadow">
+    <div class="container flex items-center justify-center px-6 py-8 mx-auto text-gray-100 capitalize">
+        <ul class="navbar-nav">
+            <router-link  class="border-b-2 border-transparent hover:text-pink-800 hover:border-pink-800 mx-1.5 sm:mx-6" to="" > Home </router-link>
+            <router-link class="border-b-2 border-transparent hover:text-pink-800 hover:border-pink-800 mx-1.5 sm:mx-6" to=""> History </router-link>
+            <router-link to="" class="border-b-2 border-transparent hover:text-pink-800 hover:border-pink-800 mx-1.5 sm:mx-6" @click.prevent="signOut"> <font-awesome-icon :icon="['fas', 'user-alt']" class="mx-2 fa-lg icon alt"/> Logout</router-link>
+        </ul>
+        </div>
+  </nav>
   <h1 class="text-6xl font-normal leading-normal mt-4 mb-2 text-pink-800">Draw Page</h1>
   <div class="grid grid-cols-2 gap-3 bg-gray-800">    
     <div class="col-span-1"> 
@@ -33,7 +41,7 @@
       <h2 class="flex justify-end text-2xl font-semibold leading-normal m-4 p-4 text-pink-800"> Total amount: {{totalAmount()}}</h2> 
 
      <div v-if="finish">
-      <save :amount="this.amount" :win="this.win"></save>
+      <save :amount="this.amount" :win="this.win" :ndraw="this.ndraw" :status="this.status"></save>
      </div>
     </div>
     </div>
@@ -54,7 +62,8 @@ export default {
           ndraw:[],
           numbers:[],
           finish: false,
-          amount: 0
+          amount: 0,
+          status: "Lost"
          };
         },
         computed:
@@ -106,8 +115,9 @@ export default {
              li.innerText = num;
              li.value = num; 
              
-             if(this.win.length===5)
+             if(this.win.length===3)
               {
+              this.status = "Win";
               var title = document.getElementById("title");
               title.classList.remove("text-pink-800");
               title.classList.add("text-green-600");
@@ -125,6 +135,7 @@ export default {
             }
              await t(2000);
              this.finish = true;
+             console.log(this.ndraw);
         },
     
         draw() 

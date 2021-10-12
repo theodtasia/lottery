@@ -7,7 +7,7 @@ import Register from '../views/Register.vue';
 import History from '../views/History.vue';
 
 
-import firebase from 'firebase';
+import { getAuth, } from "firebase/auth";
 
 Vue.use(VueRouter);
 
@@ -64,7 +64,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.authRequired)) {
-        if (firebase.auth().currentUser) {
+        if (getAuth().currentUser) {
             next();
         } else {
             alert('You must be logged in to see this page');

@@ -12,7 +12,7 @@
             </div>
             <div class="modal-body">
               <slot name="body">
-                You' ve got {{ this.win.length }}/5 Numbers.
+                You' ve got {{ win.length }}/5 Numbers.
               </slot>
             </div>
         
@@ -34,10 +34,9 @@
 
 <script>
 
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
-import '@firebase/firestore'
+import {getFirestore,collection,addDoc,Timestamp,} from "firebase/firestore";
+
+import {getAuth,} from "firebase/auth";
 
 export default {
   name: "save",
@@ -53,33 +52,46 @@ export default {
     },
     status:
     {
-        default:""
+        default:"Lost"
+    },
+    ndraw:
+    {
+       default:[]
     }
   },
-
+  data() {
+    return {
+      
+      }},
 
   methods: {
  
+      bet() {
+            return this.$store.getters.user.numbers;
+        },
     async save() 
     {
-       const firestore = firebase.firestore();
-       var user = firebase.auth().currentUser.uid;
-       const db = firebase.getFirestore();
-       try {
-        const docRef = await firestore.addDoc(firestore.collection(db, "history"), {
+      var userID = getAuth().currentUser.uid;
+      const db = getFirestore();
+      try {
+        const docRef = await addDoc(collection(db, "history"), 
+        {
           amount: this.amount,
-          numbers: this.win,
-          status: "win",
-          user: user,
-          date: firestore.Timestamp.fromDate(new Date()),
-          
+          user: userID,
+          date: Timestamp.fromDate(new Date()),
+          playedNumbers: this.bet(),
+          winningNumbers:this.win,
+          drawNumbers:this.ndraw,
+          status:this.status,
         });
-        alert(`Game ${docRef.id} was saved to history.`),
-          this.$router.push("/");
-      } catch (e) {
-        console.error("Error adding document: ", e);
+        alert(`Game ${docRef.id} is saved.`),
+          this.$router.push("/home");
+      } 
+      catch (e) 
+       {
+        console.error("Error: ", e);
       }
-       },
+    },
      
     },
 }

@@ -3,9 +3,9 @@ import App from './App.vue';
 import router from './router';
 import navbar from './components/navbar.vue';
 import save from './components/save.vue';
-
+import ShowHistory from './components/ShowHistory.vue';
 import store from './store';
-import firebase from 'firebase/app';
+import { initializeApp } from "firebase/app";
 import 'firebase/firestore';
 import 'tailwindcss/tailwind.css';
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -26,10 +26,12 @@ var firebaseConfig = {
     measurementId: 'G-7JMH447J3J',
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.component('navbar',navbar)
 Vue.component('save',save)
+Vue.component('ShowHistory',ShowHistory)
+
 Vue.config.productionTip = false;
 
 new Vue({

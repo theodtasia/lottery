@@ -23,7 +23,7 @@
 
 
 <script>
-import firebase from 'firebase';
+import { getAuth,  createUserWithEmailAndPassword,} from "firebase/auth";
 
 export default {
     name: 'Register',
@@ -35,9 +35,8 @@ export default {
     },
     methods: {
         register() {
-            firebase
-                .auth()
-                .createUserWithEmailAndPassword(this.email, this.password)
+               const auth = getAuth();
+                 createUserWithEmailAndPassword(auth, this.email, this.password)
                 .then(() => {
                     alert('Successfully registered! Please login.');
                     this.$router.push('/');

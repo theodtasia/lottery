@@ -43,7 +43,8 @@
 </template>
 
 <script>
-import firebase from "firebase";
+import { getAuth, signInWithEmailAndPassword} from "firebase/auth";
+
 export default {
   data() {
     return {
@@ -56,9 +57,9 @@ export default {
   },
   methods: {
     submit() {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.form.email, this.form.password)
+
+       const auth = getAuth();
+       signInWithEmailAndPassword(auth, this.form.email, this.form.password)
         .then(
             data => { 
           console.log(data)

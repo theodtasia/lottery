@@ -12,7 +12,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import firebase from "firebase";
+import { getAuth, signOut,} from "firebase/auth";
 export default {
   computed: {
     ...mapGetters({
@@ -21,9 +21,8 @@ export default {
   },
   methods: {
     signOut() {
-      firebase
-        .auth()
-        .signOut()
+        getAuth()
+        signOut()
         .then(() => {
           this.$router.replace({
             name: "Login"
