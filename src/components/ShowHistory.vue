@@ -1,5 +1,7 @@
 <template>
-  <div class=" border-4 my-5 mx-auto p-1 rounded border-black  w-1/2 text-center mb-5">
+<div class="grid grid-cols-3 gap-4">
+    <div></div>
+  <div class=" border-4 p-1 m-auto text-align-center rounded w-80 border-gray-400 text-center mb-5">
     <div class="mx-2 flex">
       <p class="font-bold">Date: </p>
       <p class="px-1">{{ game.date.toDate().toDateString() }}</p>
@@ -14,7 +16,7 @@
     </div>
     <div class="mx-2 flex">
       <p class="font-bold">Played Numbers: </p>
-      <p class="px-1" v-for="num in game.playedNumbers" :key="num" > {{num}}  </p>
+      <p class="px-1 " v-for="num in game.playedNumbers" :key="num" > {{num}}  </p>
     </div>
      <div class="mx-2 flex">
       <p class="font-bold">Drawn Numbers: </p>
@@ -25,7 +27,7 @@
       <p class="px-1"> {{game.amount}} </p>
     </div>
   </div>
-
+</div>
     
 </template>
 
