@@ -4,20 +4,20 @@
 <h1 class="text-6xl font-normal leading-normal mt-4 mb-2 text-pink-800">Home</h1>
 <div class="grid grid-cols-5 gap-3 bg-gray-800">
   <div class="col-span-4"> 
-      <h2 class="text-2xl font-semibold leading-normal mt-4 mb-2 text-pink-800">
+      <h2 class="text-xl md:text-3xl font-semibold leading-normal mt-4 mb-2 text-pink-800">
         Pick the numbers </h2>
-    <div class="container mx-auto">
-     <div class="grid grid-cols-5 gap-3 my-4"> 
+    <div class="container my-5">
+     <div class="grid grid-cols-5 gap-3 my-12"> 
         <div v-for="index in 30" :key="index">
-            <button  v-on:click="takeValue(index)" type="submit"  class="bg-pink-800 hover:bg-blue-dark text-white md:text-2xl m- font-bold md:w-24 w-14 px-2 py-2 rounded">{{index}}</button>
+            <button  v-on:click="takeValue(index)" type="submit"  class="bg-pink-800 hover:bg-blue-dark text-white md:text-2xl m-2 font-bold md:w-24 w-14 px-2 py-2 rounded">{{index}}</button>
         </div>
     </div>
     </div>
   </div>
-  <div id="show" class="bg-gray-400">  <h2 class="text-2xl font-semibold leading-normal mt-4 mb-2 text-pink-800">
+  <div id="show" class="bg-gray-400">  <h2 class="text-xl md:text-3xl font-semibold leading-normal mt-4 mb-2 my-3 text-pink-800">
         Your bet </h2>
     <div v-for="number in this.numbers" :key="number"> 
-            <button  class="bg-pink-800 hover:bg-blue-dark text-white md:text-2xl m-3 font-bold md:w-24 w-14 px-2 py-2 rounded-full">{{number}}</button>
+            <button  class="bg-pink-800 hover:bg-blue-dark w-9 m-4 p-2 text-sm md:text-2xl text-white font-bold md:my-4 md:py-4 md:h-20 md:w-20 rounded-full">{{number}}</button>
             <button  v-on:click="deleteValue(number)" type="submit">  <font-awesome-icon :icon="['fas', 'minus-circle']" class="mx-2 text-yellow-700 fa-lg icon alt"/> </button>
 
     </div>

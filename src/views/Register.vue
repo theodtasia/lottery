@@ -1,5 +1,8 @@
 <template>
-   <div class= " flex justify-center my-20">
+<div>
+<h1 class="text-6xl font-normal leading-normal mt-8 text-pink-800">Lottery</h1>
+
+   <div class= "flex justify-center mt-20">
  <div class="max-w-xs bg-gray-400 flex justify-center py-10 px-20 rounded-lg shadow-lg" > 
         <form @submit.prevent="register">
             <div class="form-group">
@@ -14,9 +17,10 @@
                 placeholder="password..."
                 v-model="password"
             />
-            <button class="bg-yellow-500 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" type="submit">Sign Up</button>
+            <button class="bg-yellow-600 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" type="submit">Sign Up</button>
             </div>
         </form>
+    </div>
     </div>
     </div>
 </template>
