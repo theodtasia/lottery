@@ -35,6 +35,7 @@
 <script>
 
 import { mapMutations} from "vuex";
+import {getAuth,} from "firebase/auth";
 
 export default {
     name: 'Home',
@@ -76,7 +77,8 @@ export default {
             }
 
         }
-        
+      const userID = getAuth().currentUser.uid;
+    console.log(userID)
       console.log(this.numbers)
     },
     
