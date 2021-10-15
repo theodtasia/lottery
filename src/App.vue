@@ -1,11 +1,13 @@
 <template>
     <div id="app">
-        <router-view />
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
 import { getAuth, signOut,} from "firebase/auth";
+import './assets/index.css';
+import './assets/index.css';
 
 export default {
     methods: {

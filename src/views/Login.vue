@@ -35,7 +35,7 @@
 
               <div class="form-group row mt-3 mb-0">
                   <button type="submit" class="bg-yellow-600 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded">Login</button>
-                  <button @click="SignUp()" class="bg-yellow-600 hover:bg-blue-dark mx-5 text-white font-bold py-2 px-4 rounded">Sign Up</button>
+                  <button @click="SignUp(e)" class="bg-yellow-600 hover:bg-blue-dark mx-5 text-white font-bold py-2 px-4 rounded">Sign Up</button>
                 
               </div>
             </form>
@@ -72,10 +72,12 @@ export default
           this.error = err.message;
         });
     },
-    SignUp(){
-   this.$router.push('/register'); 
+    SignUp(e){
+      console.log(e);
+         this.$router.push('/register'); 
       }
 
   }
 };
 </script>
+<style></style>

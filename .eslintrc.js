@@ -8,5 +8,8 @@ module.exports = {
     parserOptions: {
         parser: 'babel-eslint',
     },
-    
+    "rules": {
+        "no-unused-vars": "off",
+        "no-fallthrough": "off"
+      }
 };

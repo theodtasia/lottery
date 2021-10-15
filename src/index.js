@@ -10,9 +10,8 @@ import 'firebase/firestore';
 import 'tailwindcss/tailwind.css';
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUserAlt,faBars, faMinusCircle} from "@fortawesome/free-solid-svg-icons";
-
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
+import './assets/index.css'
 library.add(faUserAlt, faBars, faMinusCircle);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
