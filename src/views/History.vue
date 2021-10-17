@@ -7,24 +7,31 @@
       v-for="(game, index) in history"
       :key="index"
       :game="game"
+       v-on:remove-game="deleteGame"
     />
  </div>
 </template>
 
 <script>
-import { collection, getDocs, getFirestore } from "firebase/firestore";
+import {where,orderBy,query, collection, getDocs, getFirestore } from "firebase/firestore";
 import {getAuth,} from "firebase/auth";
 import ShowHistory from "../components/ShowHistory.vue";
 
 export default {
   components: { ShowHistory},
+   data() 
+  {
+    return {
+      history: [],
+    };
+  },
   async created() 
   {
-    
     const db = getFirestore();
     var userID = getAuth().currentUser.uid;
-    const query = await getDocs(collection(db, "history"));
-    query.forEach((doc) => 
+    const q = query(collection(db, "history"), orderBy("date","desc"));
+    const quer = await getDocs(q);
+    quer.forEach((doc) => 
     {    
       console.log(doc.data().userID);
       if (doc.data().user == userID) 
@@ -33,14 +40,20 @@ export default {
       }
     });
   },
-  data() 
+  methods: {
+  deleteGame(g) 
   {
-    return {
-      history: [],
-    };
-  },
-  
-};
+      this.history = this.history.filter
+      (
+        (game) => game.date.seconds !== g.date.seconds
+      );
+      const db = getFirestore();
+      const q = query(collection(db, "history"), where("date", "==", g.date));
+      const quer = getDocs(q);
+      console.log(g.date);
+      
+  }, 
+}
+}
 </script>
 
-<style></style>
