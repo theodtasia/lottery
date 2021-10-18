@@ -28,7 +28,7 @@ output: {
       showErrors: true,
       cache: true,
       title: "Casino",
-      template: join("/public/index.html"),
+      template: join("./public/index.html"),
       
     }),
   ],

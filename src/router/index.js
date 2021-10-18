@@ -25,7 +25,7 @@ const routes = [
         name: 'Register',
         component: Register,
         meta: {
-            title: 'Register' 
+            title: 'Register'
           }
     },
     {
@@ -33,7 +33,8 @@ const routes = [
         name: 'Draw',
         component: Draw,
         meta: {
-            title: 'Draw' 
+            title: 'Draw',
+            authRequired: true,
           }
        
     },
@@ -51,7 +52,8 @@ const routes = [
         name: 'History',
         component: History,
         meta: {
-            title: 'History' 
+            title: 'History',
+            authRequired: true,
           }
     },
 ];

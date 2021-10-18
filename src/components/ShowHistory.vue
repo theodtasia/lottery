@@ -1,5 +1,5 @@
 <template>
-<div class="grid grid-cols-3 gap-4">
+<div class="grid grid-cols-3 gap-3">
     <div></div>
   <div class=" border-4 p-1 m-auto text-align-center rounded w-80 border-gray-400 text-center mb-5">
     <div class="mx-2 flex">
@@ -26,6 +26,24 @@
       <p class="font-bold">Total amount: </p>
       <p class="px-1"> {{game.amount}} </p>
     </div>
+    <button
+      class="
+        bg-red-500
+        text-gray-200
+        rounded
+        hover:bg-red-400
+        px-2
+        py-1
+        focus:outline-none
+        inline-flex
+        align-middle
+        text-xs
+        object-right
+      "
+      @click="removeGame(game)"
+    >
+      X
+    </button>
   </div>
 </div>
     
@@ -39,6 +57,11 @@ export default
   {
     game: [],
   },
+   methods: {
+    removeGame(game) {
+      this.$emit("remove-game", game);
+    }
+   }
 };
 </script>
 
