@@ -7,13 +7,14 @@
       v-for="(game, index) in history"
       :key="index"
       :game="game"
-       v-on:remove-game="deleteGame"
+      v-on:remove-game="deleteG"
+      
     />
  </div>
 </template>
 
 <script>
-import {where,orderBy,query, collection, getDocs, getFirestore } from "firebase/firestore";
+import {where,orderBy,query,deleteDoc,collection,doc, getDocs, getFirestore } from "firebase/firestore";
 import {getAuth,} from "firebase/auth";
 import ShowHistory from "../components/ShowHistory.vue";
 
@@ -40,20 +41,27 @@ export default {
       }
     });
   },
-  methods: {
-  deleteGame(g) 
+  
+  methods: 
   {
+    
+  async deleteG(g) 
+    {
+    
       this.history = this.history.filter
       (
         (game) => game.date.seconds !== g.date.seconds
       );
       const db = getFirestore();
       const q = query(collection(db, "history"), where("date", "==", g.date));
-      const quer = getDocs(q);
-      console.log(g.date);
-      
-  }, 
-}
+      const quer = await getDocs(q);
+      quer.forEach((docs) => 
+       {    
+        deleteDoc(doc(db, "history", docs.id));
+       
+    });
+    },
+  }
 }
 </script>
 

@@ -25,7 +25,7 @@ var firebaseConfig = {
     measurementId: 'G-7JMH447J3J',
 };
 // Initialize Firebase
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.component('navbar',navbar)
 Vue.component('save',save)

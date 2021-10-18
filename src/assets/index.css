@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+    .item 
+    {
+      @apply px-2 flex;
+    }
