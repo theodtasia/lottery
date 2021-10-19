@@ -135,7 +135,6 @@ export default {
             }
              await t(2000);
              this.finish = true;
-             console.log(this.ndraw);
         },
     
         draw() 
@@ -146,7 +145,6 @@ export default {
             num = Math.floor(Math.random() * 30) + 1;
           }
           while (this.ndraw.includes(num));
-          console.log(num)
           return num;
         },
 

@@ -64,7 +64,6 @@ export default
        signInWithEmailAndPassword(auth, this.form.email, this.form.password)
         .then(
             data => { 
-          console.log(data)
           this.$router.replace({name: "Home" });
         })
         .catch(err => {
@@ -72,7 +71,6 @@ export default
         });
     },
     SignUp(e){
-      console.log(e);
          this.$router.push('/register'); 
       }
 

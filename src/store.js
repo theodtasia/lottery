@@ -8,7 +8,7 @@ export default new Vuex.Store({
     user: {
       loggedIn: false,
       data: null,
-      numbers: []
+      numbers: [],
     }
   },
 
@@ -17,7 +17,8 @@ export default new Vuex.Store({
       return state.user
     }
   },
-  mutations: {
+  mutations: 
+  {
     SET_LOGGED_IN(state, value) 
     {
       state.user.loggedIn = value;
@@ -29,7 +30,8 @@ export default new Vuex.Store({
     SET_NUMBERS(state,value)
     {
       state.user.numbers = value;
-    }
+    },
+ 
   },
   actions: {
     fetchUser({ commit }, user) 
@@ -49,7 +51,8 @@ export default new Vuex.Store({
     },
     set_numbers({ commit }, value) {
           commit("SET_NUMBERS", value);
-    }
+    },
+   
     
   }
 });

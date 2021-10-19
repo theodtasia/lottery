@@ -3,6 +3,7 @@ import App from './App.vue';
 import router from './router';
 import navbar from './components/navbar.vue';
 import save from './components/save.vue';
+
 import ShowHistory from './components/ShowHistory.vue';
 import store from './store';
 import { initializeApp } from "firebase/app";
@@ -30,6 +31,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.component('navbar',navbar)
 Vue.component('save',save)
 Vue.component('ShowHistory',ShowHistory)
+
 
 Vue.config.productionTip = false;
 
