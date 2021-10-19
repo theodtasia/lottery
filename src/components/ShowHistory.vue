@@ -42,14 +42,6 @@ export default
       ]
     }
   },
-  computed: {
-    
-    saveList:function()
-    {
-     this.listv.push(this.name);
-     console.log(listv);
-    }
-  },
    methods: {
     deleteGame(game) 
     {
