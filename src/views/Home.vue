@@ -59,8 +59,6 @@ export default {
     {
     takeValue: function (indexVal) {
         this.counter+=1;
-        console.log(indexVal)
-        console.log(this.numbers.includes(indexVal))
         if(this.numbers.includes(indexVal))
         {
             alert("You have already select this number")
@@ -79,14 +77,11 @@ export default {
 
         }
       const userID = getAuth().currentUser.uid;
-    console.log(userID)
-      console.log(this.numbers)
     },
     
     deleteValue: function(indexVal)
     {
         this.numbers.splice(this.numbers.indexOf(indexVal),1);
-        console.log(indexVal);
     },
 
     bet: function () 

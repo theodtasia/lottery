@@ -18,8 +18,9 @@ import {where,orderBy,query,deleteDoc,collection,doc, getDocs, getFirestore } fr
 import {getAuth,} from "firebase/auth";
 import ShowHistory from "../components/ShowHistory.vue";
 
-export default {
-  components: { ShowHistory},
+export default 
+{
+   components: { ShowHistory},
    data() 
   {
     return {
@@ -34,7 +35,6 @@ export default {
     const quer = await getDocs(q);
     quer.forEach((doc) => 
     {    
-      console.log(doc.data().userID);
       if (doc.data().user == userID) 
       {
         this.history.push(doc.data());
