@@ -1,10 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
-import navbar from './components/navbar.vue';
-import save from './components/save.vue';
-
-import ShowHistory from './components/ShowHistory.vue';
+import navbar from './components/Navbar.vue';
 import store from './store';
 import { initializeApp } from "firebase/app";
 import 'firebase/firestore';
@@ -15,6 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import './assets/index.css'
 library.add(faUserAlt, faBars, faMinusCircle);
 
+Vue.component('navbar',navbar)
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 var firebaseConfig = {
     apiKey: 'AIzaSyD18RyCRqsdEzKg-h5wsla0kguOM7SHR2c',
@@ -27,11 +25,6 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-Vue.component('font-awesome-icon', FontAwesomeIcon)
-Vue.component('navbar',navbar)
-Vue.component('save',save)
-Vue.component('ShowHistory',ShowHistory)
-
 
 Vue.config.productionTip = false;
 

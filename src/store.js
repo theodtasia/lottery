@@ -17,42 +17,30 @@ export default new Vuex.Store({
       return state.user
     }
   },
-  mutations: 
-  {
-    SET_LOGGED_IN(state, value) 
-    {
+  mutations: {
+    SET_LOGGED_IN(state, value) {
       state.user.loggedIn = value;
     },
-    SET_USER(state, data) 
-    {
+    SET_USER(state, data) {
       state.user.data = data;
     },
-    SET_NUMBERS(state,value)
-    {
+    SET_NUMBERS(state,value){
       state.user.numbers = value;
     },
- 
   },
   actions: {
-    fetchUser({ commit }, user) 
-    {
+    fetchUser({ commit }, user) {
       commit("SET_LOGGED_IN", user !== null);
-
-      if (user) 
-      {
+      if (user) {
         commit("SET_USER", {
           email: user.email
         });
-      } 
-      else 
-      {
+      } else {
         commit("SET_USER", null);
       }
     },
     set_numbers({ commit }, value) {
           commit("SET_NUMBERS", value);
-    },
-   
-    
+    }, 
   }
 });

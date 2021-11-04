@@ -1,10 +1,9 @@
 <template>
-<div>
-<transition name="modal">
+ <div>
+   <transition name="modal">
       <div class="modal-mask">
         <div class="modal-wrapper">
           <div class="modal-container">
-
             <div class="font-bold text-lg">
               <slot name="header">
                Total Amount Won: {{amount}} €.
@@ -15,67 +14,55 @@
                 You' ve got {{ win.length }}/5 Numbers.
               </slot>
             </div>
-        
-         <router-link to="/Home">
-         <button
-          class=" bg-yellow-600 hover:bg-blue-dark text-white text-md px-3 md:text-l font-bold my-5 py-4 md:px-5 rounded-full"
-         >Go Back </button>
-      </router-link>
-      <button
-        class=" bg-yellow-600 hover:bg-blue-dark text-white text-md px-3 m-1 md:m-2 md:text-l font-bold my-5 py-4 md:px-5 rounded-full"
-        @click="save" >Save</button>
-
+            <router-link to="/Home">
+              <button
+                class=" bg-yellow-600 hover:bg-blue-dark text-white text-md px-3 md:text-l font-bold my-5 py-4 md:px-5 rounded-full"
+              >
+               Go Back 
+              </button>
+            </router-link>
+            <button
+             class=" bg-yellow-600 hover:bg-blue-dark text-white text-md px-3 m-1 md:m-2 md:text-l font-bold my-5 py-4 md:px-5 rounded-full"
+             @click="save" 
+             >
+             Save
+            </button>
           </div>
         </div>
       </div>
-    </transition>
-    </div>
+   </transition>
+  </div>
 </template>
 
 <script>
-
 import {getFirestore,collection,addDoc,Timestamp,} from "firebase/firestore";
-
 import {getAuth,} from "firebase/auth";
 
 export default {
   name: "save",
-  props: 
-  {
-    amount: 
-    {
+  props: {
+    amount: {
      default: 0
     },
-    win:
-    {
+    win:{
      default: []
     },
-    status:
-    {
+    status:{
         default:"Lost"
     },
-    ndraw:
-    {
+    ndraw:{
        default:[]
     }
   },
-  data() {
-    return {
-      
-      }},
-
   methods: {
- 
-      bet() {
-            return this.$store.getters.user.numbers;
-        },
-    async save() 
-    {
+    bet() {
+      return this.$store.getters.user.numbers;
+    },
+    async save() {
       var userID = getAuth().currentUser.uid;
       const db = getFirestore();
       try {
-        const docRef = await addDoc(collection(db, "history"), 
-        {
+        const docRef = await addDoc(collection(db, "history"), {
           amount: this.amount,
           user: userID,
           date: Timestamp.fromDate(new Date()),
@@ -85,17 +72,14 @@ export default {
           status:this.status,
         });
         alert(`Game ${docRef.id} is saved.`),
-          this.$router.push("/home");
+        this.$router.push("/home");
       } 
-      catch (e) 
-       {
+      catch (e) {
         console.error("Error: ", e);
       }
     },
-     
-    },
+  },
 }
-
 </script>
 
 <style>

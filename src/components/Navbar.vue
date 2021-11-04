@@ -6,7 +6,7 @@
             <router-link class="border-b-2 border-transparent hover:text-pink-800 hover:border-pink-800 mx-1.5 sm:mx-6" to="History"> History </router-link>
             <router-link to="/" class="border-b-2 border-transparent hover:text-pink-800 hover:border-pink-800 mx-1.5 sm:mx-6" @click.prevent="signOut"> <font-awesome-icon :icon="['fas', 'user-alt']" class="mx-2 fa-lg icon alt"/> Logout</router-link>
         </ul>
-        </div>
+    </div>
   </nav>
 </template>
 

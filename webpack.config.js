@@ -11,7 +11,7 @@ const { HotModuleReplacementPlugin } = require("webpack");
 const config = 
 {
   entry: ["babel-polyfill", join(__dirname, "/src/index.js")],
-output: {
+  output: {
   path: join(__dirname, "build"),
   filename: "[name].js",
 },
@@ -42,8 +42,7 @@ output: {
   
   module: 
   {
-    rules: [
-      {
+    rules: [{
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
@@ -68,17 +67,16 @@ output: {
       // Add your rules for custom modules here
       // Learn more about loaders from https://webpack.js.org/loaders/
     ]
-  },optimization: 
-  {
+  },
+  optimization: {
     splitChunks: {
       cacheGroups: {
         
-        vendor: {
-          
-          chunks: 'initial',
-        name: 'vendor',
-        test: 'vendor',
-        enforce: true
+        vendor: {  
+         chunks: 'initial',
+         name: 'vendor',
+         test: 'vendor',
+         enforce: true
         },
       },
     },
