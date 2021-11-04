@@ -15,7 +15,7 @@
             type="password"
             placeholder="password..."
             v-model="password"
-            />
+        />
         <button class="bg-yellow-600 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" type="submit">Sign Up</button>
       </div>
      </form>

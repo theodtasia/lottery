@@ -1,7 +1,7 @@
 <template>
-<div>
-<navbar></navbar>
-<h1 class="text-6xl font-normal leading-normal mt-4 mb-2 text-pink-800">Home</h1>
+ <div>
+  <navbar></navbar>
+  <h1 class="text-6xl font-normal leading-normal mt-4 mb-2 text-pink-800">Home</h1>
   <div class="grid grid-cols-5 gap-3 bg-gray-800">
     <div class="col-span-4"> 
       <h2 class="text-xl md:text-3xl font-semibold leading-normal mt-4 mb-2 text-pink-800">Pick the numbers </h2>
@@ -21,10 +21,10 @@
     </div>
     <div v-if="this.numbers.length > 4">
       <button  v-on:click="bet()" type="submit"  class=" bg-yellow-600 hover:bg-blue-dark text-white text-md px-3 md:text-2xl font-bold my-5 py-4 md:px-12 rounded-full">Submit</button>
+    </div>
    </div>
   </div>
  </div>
-</div>
 </template>
 
 

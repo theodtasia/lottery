@@ -32,16 +32,13 @@ const config =
       
     }),
   ],
-  performance: 
-  {
+  performance: {
     hints: false,
     maxEntrypointSize: 512000,
     maxAssetSize: 512000
-},
+  },
  
-  
-  module: 
-  {
+  module: {
     rules: [{
         test: /\.tsx?$/,
         use: 'ts-loader',
@@ -70,8 +67,7 @@ const config =
   },
   optimization: {
     splitChunks: {
-      cacheGroups: {
-        
+      cacheGroups: {       
         vendor: {  
          chunks: 'initial',
          name: 'vendor',
