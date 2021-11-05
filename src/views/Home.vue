@@ -29,12 +29,11 @@
 
 
 <script>
-
-import { mapMutations} from "vuex";
 import {getAuth,} from "firebase/auth";
 
 export default {
     name: 'Home',
+  
     data: function() {
      return {
       counter: 0,
@@ -43,10 +42,6 @@ export default {
       };
     },
     
-    computed:{
-    ...mapMutations({SET_NUMBERS: ['SET_NUMBERS'] }),
-    },
-
     methods: {
     takeValue: function (indexVal) {
         this.counter+=1;
@@ -54,10 +49,10 @@ export default {
             alert("You have already select this number")
         } else {
             if( this.numbers.length > 4){
-                this.numbers.splice(0,1);
-                this.numbers.push(indexVal)
+              this.numbers.splice(0,1);
+              this.numbers.push(indexVal)
             } else {
-                this.numbers.push(indexVal)
+              this.numbers.push(indexVal)
             }
 
         }
@@ -65,13 +60,13 @@ export default {
     },
     
     deleteValue: function(indexVal){
-        this.numbers.splice(this.numbers.indexOf(indexVal),1);
+      this.numbers.splice(this.numbers.indexOf(indexVal),1);
     },
 
     bet: function () { 
-        var number=this.numbers;
-        this.$store.dispatch("set_numbers", number);
-        this.$router.push({name:'Draw'})
+      var number=this.numbers;
+      this.$store.dispatch("set_numbers", number);
+      this.$router.push({name:'Draw'})
     }
   }
 };
