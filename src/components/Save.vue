@@ -4,12 +4,10 @@
       <div class="modal-mask">
         <div class="modal-wrapper">
           <div class="modal-container">
-            <div class="font-bold text-lg">
-              <slot name="header"> Total Amount Won: {{ amount }} €. </slot>
+            <div ref="total_amount" class="font-bold text-lg">
+              Total Amount Won: {{ amount }} €.
             </div>
-            <div class="modal-body">
-              <slot name="body"> You' ve got {{ win.length }}/5 Numbers. </slot>
-            </div>
+            <div class="modal-body">You' ve got {{ win.length }}/5 Numbers.</div>
             <router-link to="/Home">
               <button
                 class=" bg-yellow-600 hover:bg-blue-dark text-white text-md px-3 md:text-l font-bold my-5 py-4 md:px-5 rounded-full"
@@ -38,16 +36,18 @@ export default {
   name: 'Save',
   props: {
     amount: {
-      default: 0,
+      type: Number,
     },
     win: {
-      default: [],
+      type: Array,
+      default: () => [0],
     },
     status: {
       default: 'Lost',
     },
     ndraw: {
-      default: [],
+      type: Array,
+      default: () => [0],
     },
   },
   methods: {
